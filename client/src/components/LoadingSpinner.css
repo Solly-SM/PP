@@ -1,0 +1,113 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  width: 100%;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.heart-loader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  position: relative;
+  transform: rotate(-45deg);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -20px;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  left: 20px;
+}
+
+.loading-spinner.small .heart {
+  width: 24px;
+  height: 24px;
+}
+
+.loading-spinner.small .heart:before,
+.loading-spinner.small .heart:after {
+  width: 24px;
+  height: 24px;
+}
+
+.loading-spinner.small .heart:before {
+  top: -12px;
+}
+
+.loading-spinner.small .heart:after {
+  left: 12px;
+}
+
+.loading-spinner.large .heart {
+  width: 60px;
+  height: 60px;
+}
+
+.loading-spinner.large .heart:before,
+.loading-spinner.large .heart:after {
+  width: 60px;
+  height: 60px;
+}
+
+.loading-spinner.large .heart:before {
+  top: -30px;
+}
+
+.loading-spinner.large .heart:after {
+  left: 30px;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  25% {
+    transform: rotate(-45deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1);
+  }
+  75% {
+    transform: rotate(-45deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1);
+  }
+}
