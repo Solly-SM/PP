@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ff6b9d" />
+    <meta
+      name="description"
+      content="HeartConnect - A unique dating app for meaningful connections"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>💖 HeartConnect - Find Your Perfect Match</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      
+      code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+          monospace;
+      }
+      
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* Loading animation */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .loading-heart {
+        width: 50px;
+        height: 50px;
+        background: #ff6b9d;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        animation: heartbeat 1.2s ease-in-out infinite;
+        position: relative;
+      }
+      
+      .loading-heart:before,
+      .loading-heart:after {
+        content: '';
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background: #ff6b9d;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+      }
+      
+      .loading-heart:before {
+        left: 25px;
+        transform: rotate(-45deg) translateX(-50%);
+      }
+      
+      .loading-heart:after {
+        top: -25px;
+        transform: rotate(-45deg) translateY(50%);
+      }
+      
+      @keyframes heartbeat {
+        0% { transform: rotate(-45deg) scale(1); }
+        25% { transform: rotate(-45deg) scale(1.1); }
+        50% { transform: rotate(-45deg) scale(1); }
+        75% { transform: rotate(-45deg) scale(1.1); }
+        100% { transform: rotate(-45deg) scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <div class="loading-container">
+        <div class="loading-heart"></div>
+      </div>
+    </div>
+  </body>
+</html>
