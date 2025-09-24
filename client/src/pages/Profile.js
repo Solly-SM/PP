@@ -23,7 +23,7 @@ const Profile = ({ user, setUser }) => {
 
   useEffect(() => {
     loadUserProfile();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const loadUserProfile = async () => {
     try {

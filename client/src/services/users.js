@@ -62,7 +62,8 @@ export const getUserStats = async () => {
   }
 };
 
-export default {
+// Named export for compatibility
+const userService = {
   getUserProfile,
   updateUserProfile,
   uploadPhoto,
@@ -70,3 +71,5 @@ export default {
   discoverUsers,
   getUserStats
 };
+
+export default userService;
