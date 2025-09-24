@@ -14,6 +14,10 @@ const userRoutes = require('./routes/users');
 const matchRoutes = require('./routes/matches');
 const messageRoutes = require('./routes/messages');
 
+// Import mock routes
+const { router: mockAuthRouter } = require('./routes/mockAuth');
+const mockUserRoutes = require('./routes/mockUsers');
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -28,17 +32,30 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// MongoDB connection
+// Mock routes for testing (always available)
+app.use('/api/mock-auth', mockAuthRouter);
+app.use('/api/mock-users', mockUserRoutes);
+
+// MongoDB connection with fallback
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/heartconnect', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('📊 Connected to MongoDB'))
-.catch(err => console.error('❌ MongoDB connection error:', err));
+.then(() => {
+  console.log('📊 Connected to MongoDB');
+  // Use real routes when MongoDB is connected
+  app.use('/api/auth', authRoutes);
+  app.use('/api/users', userRoutes);
+})
+.catch(err => {
+  console.error('❌ MongoDB connection error:', err.message);
+  console.log('🔄 Using mock routes for testing...');
+  // Use mock routes when MongoDB is not connected
+  app.use('/api/auth', mockAuthRouter);
+  app.use('/api/users', mockUserRoutes);
+});
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
+// Always use these routes regardless of DB connection
 app.use('/api/matches', matchRoutes);
 app.use('/api/messages', messageRoutes);
 
