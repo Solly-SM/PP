@@ -539,4 +539,86 @@ function getRecommendationReasons(currentUser, potentialMatch) {
   return reasons.slice(0, 3); // Return top 3 reasons
 }
 
+// @route   GET /api/matches/likes
+// @desc    Get users who have liked the current user
+// @access  Private
+router.get('/likes', authMiddleware, async (req, res) => {
+  try {
+    const { page = 1, limit = 20 } = req.query;
+    const skip = (page - 1) * limit;
+
+    // Find matches where someone else liked the current user but it's still pending
+    const likes = await Match.find({
+      users: req.user._id,
+      status: 'pending',
+      'interactions.action': { $in: ['like', 'super-like'] },
+      'interactions.user': { $ne: req.user._id }
+    })
+    .populate('users', 'firstName lastName age gender photos bio location lastActive isOnline isVerified')
+    .sort({ 'interactions.timestamp': -1 })
+    .skip(skip)
+    .limit(parseInt(limit));
+
+    // Transform to include the user who liked and interaction details
+    const transformedLikes = likes.map(match => {
+      const otherUser = match.users.find(user => 
+        user._id.toString() !== req.user._id.toString()
+      );
+      
+      // Find the like interaction from the other user
+      const likeInteraction = match.interactions.find(interaction => 
+        interaction.user.toString() !== req.user._id.toString() && 
+        ['like', 'super-like'].includes(interaction.action)
+      );
+
+      return {
+        id: match._id,
+        likedAt: likeInteraction?.timestamp,
+        action: likeInteraction?.action,
+        compatibilityScore: match.compatibilityScore,
+        otherUser: {
+          _id: otherUser._id,
+          firstName: otherUser.firstName,
+          lastName: otherUser.lastName,
+          age: otherUser.age,
+          gender: otherUser.gender,
+          photos: otherUser.photos,
+          bio: otherUser.bio,
+          location: otherUser.location,
+          lastActive: otherUser.lastActive,
+          isOnline: otherUser.isOnline,
+          isVerified: otherUser.isVerified
+        }
+      };
+    });
+
+    const totalLikes = await Match.countDocuments({
+      users: req.user._id,
+      status: 'pending',
+      'interactions.action': { $in: ['like', 'super-like'] },
+      'interactions.user': { $ne: req.user._id }
+    });
+
+    res.json({
+      success: true,
+      message: `Found ${transformedLikes.length} users who liked you`,
+      likes: transformedLikes,
+      pagination: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total: totalLikes,
+        pages: Math.ceil(totalLikes / limit)
+      }
+    });
+
+  } catch (error) {
+    console.error('Get likes error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get likes',
+      error: error.message
+    });
+  }
+});
+
 module.exports = router;

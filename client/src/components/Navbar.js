@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, Home, Search, Users, MessageCircle, User, LogOut } from 'lucide-react';
+import { Heart, Home, Search, Users, MessageCircle, User, LogOut, ThumbsUp } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = ({ user, onLogout }) => {
@@ -9,6 +9,7 @@ const Navbar = ({ user, onLogout }) => {
   const navItems = [
     { path: '/', icon: Home, label: 'Home' },
     { path: '/discover', icon: Search, label: 'Discover' },
+    { path: '/likes', icon: ThumbsUp, label: 'Likes' },
     { path: '/matches', icon: Users, label: 'Matches' },
     { path: '/messages', icon: MessageCircle, label: 'Messages' },
     { path: '/profile', icon: User, label: 'Profile' }
