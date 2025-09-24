@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Sparkles, Users, MessageCircle, Star, Shield } from 'lucide-react';
+import PulseLogo from '../components/PulseLogo';
 import './Landing.css';
 
 const Landing = () => {
@@ -140,7 +141,7 @@ const Landing = () => {
       <section className="features">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose HeartConnect?</h2>
+            <h2 className="section-title">Why Choose DatingPulse?</h2>
             <p className="section-description">
               Experience dating like never before with our innovative features designed for meaningful connections.
             </p>
@@ -236,7 +237,7 @@ const Landing = () => {
           <div className="cta-content">
             <h2 className="cta-title">Ready to Find Love?</h2>
             <p className="cta-description">
-              Join thousands of singles who have found meaningful connections on HeartConnect.
+              Join thousands of singles who have found meaningful connections on DatingPulse.
             </p>
             <Link to="/register" className="btn btn-primary btn-lg">
               Get Started Free
@@ -252,8 +253,8 @@ const Landing = () => {
           <div className="footer-content">
             <div className="footer-brand">
               <div className="brand-logo">
-                <Heart className="heart-icon" />
-                <span className="brand-name">HeartConnect</span>
+                <PulseLogo animated size={24} className="heart-icon" />
+                <span className="brand-name">DatingPulse</span>
               </div>
               <p className="brand-tagline">Where meaningful connections begin</p>
             </div>
@@ -289,7 +290,7 @@ const Landing = () => {
           </div>
           
           <div className="footer-bottom">
-            <p>&copy; 2024 HeartConnect. All rights reserved.</p>
+            <p>&copy; 2024 DatingPulse. All rights reserved.</p>
           </div>
         </div>
       </footer>

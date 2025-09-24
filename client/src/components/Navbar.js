@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Heart, Home, Search, Users, MessageCircle, User, LogOut, ThumbsUp } from 'lucide-react';
+import { Home, Search, Users, MessageCircle, User, LogOut, ThumbsUp } from 'lucide-react';
+import PulseLogo from './PulseLogo';
 import './Navbar.css';
 
 const Navbar = ({ user, onLogout }) => {
@@ -19,8 +20,8 @@ const Navbar = ({ user, onLogout }) => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          <Heart className="brand-icon" />
-          <span className="brand-text">HeartConnect</span>
+          <PulseLogo animated size={28} className="brand-icon" />
+          <span className="brand-text">DatingPulse</span>
         </Link>
         
         <div className="navbar-nav">

@@ -1,0 +1,28 @@
+.pulse-logo {
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.pulse-logo.animated .zig-zag-line {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawZigZag 2s ease-in-out infinite;
+}
+
+@keyframes drawZigZag {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Hover effects */
+.pulse-logo:hover {
+  transform: scale(1.05);
+}
+
+.pulse-logo:hover .zig-zag-line {
+  stroke-width: 4;
+}

@@ -37,7 +37,7 @@
 }
 
 .brand-icon {
-  animation: heartbeat 2s ease-in-out infinite;
+  /* PulseLogo has its own animation when animated prop is set */
 }
 
 .brand-text {
