@@ -29,11 +29,12 @@ A fully functional and unique dating app with innovative features designed to cr
    npm run install-all
    ```
 
-3. Set up environment variables (create `.env` file):
-   ```
-   MONGODB_URI=mongodb://localhost:27017/heartconnect
-   JWT_SECRET=your_jwt_secret_here
-   PORT=5000
+3. Set up environment variables (create `.env` file from template):
+   ```bash
+   cp .env.example .env
+   # Edit .env with your settings:
+   # MONGODB_URI=mongodb://localhost:27017/heartconnect
+   # JWT_SECRET=your_jwt_secret_here
    ```
 
 4. Start the development server:

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Camera, Edit, Settings, Heart, MapPin, Briefcase } from 'lucide-react';
+import { User, Camera, Edit, Settings, MapPin, Briefcase } from 'lucide-react';
 
 const Profile = ({ user, setUser }) => {
   const [isEditing, setIsEditing] = useState(false);
