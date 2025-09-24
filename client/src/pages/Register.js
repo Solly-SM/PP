@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Heart, Mail, Lock, User, Calendar, Eye, EyeOff } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { register } from '../services/auth';
+import PulseLogo from '../components/PulseLogo';
 import './Auth.css';
 
 const Register = ({ setUser }) => {
@@ -131,7 +132,7 @@ const Register = ({ setUser }) => {
       
       const { user } = await register(userData);
       setUser(user);
-      toast.success(`Welcome to HeartConnect, ${user.firstName}! 💖`);
+      toast.success(`Welcome to DatingPulse, ${user.firstName}! 💗`);
       navigate('/');
     } catch (error) {
       toast.error(error.message);
@@ -154,10 +155,10 @@ const Register = ({ setUser }) => {
         <div className="auth-card card">
           <div className="auth-header">
             <div className="auth-logo">
-              <Heart className="heart-icon" size={32} />
-              <h1>HeartConnect</h1>
+              <PulseLogo animated size={32} className="heart-icon" />
+              <h1>DatingPulse</h1>
             </div>
-            <h2 className="auth-title">Join HeartConnect</h2>
+            <h2 className="auth-title">Join DatingPulse</h2>
             <p className="auth-subtitle">Create your profile and start finding meaningful connections</p>
           </div>
           

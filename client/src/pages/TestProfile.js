@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Camera, Edit, Upload, X } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { mockLogin, getCurrentUser } from '../services/mockAuth';
+import { mockLogin } from '../services/mockAuth';
 import { getUserProfile, updateUserProfile, uploadPhoto, deletePhoto } from '../services/mockUsers';
 
 const TestProfile = () => {
