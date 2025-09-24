@@ -13,6 +13,7 @@ import Discover from './pages/Discover';
 import Matches from './pages/Matches';
 import Messages from './pages/Messages';
 import Profile from './pages/Profile';
+import TestProfile from './pages/TestProfile';
 import LoadingSpinner from './components/LoadingSpinner';
 
 // Services
@@ -89,6 +90,7 @@ function App() {
                 <Route path="/" element={<Landing />} />
                 <Route path="/login" element={<Login setUser={setUser} />} />
                 <Route path="/register" element={<Register setUser={setUser} />} />
+                <Route path="/test-profile" element={<TestProfile />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </>
             ) : (
@@ -100,6 +102,7 @@ function App() {
                 <Route path="/messages" element={<Messages user={user} />} />
                 <Route path="/messages/:matchId" element={<Messages user={user} />} />
                 <Route path="/profile" element={<Profile user={user} setUser={setUser} />} />
+                <Route path="/test-profile" element={<TestProfile />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </>
             )}
