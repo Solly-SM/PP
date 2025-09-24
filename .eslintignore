@@ -1,0 +1,7 @@
+client/build/
+client/node_modules/
+node_modules/
+*.min.js
+dist/
+build/
+coverage/

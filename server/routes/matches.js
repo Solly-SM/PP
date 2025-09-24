@@ -85,7 +85,7 @@ router.post('/swipe', authMiddleware, async (req, res) => {
       });
     }
 
-    let response = {
+    const response = {
       success: true,
       message: `Successfully ${action === 'pass' ? 'passed' : 'liked'} user`,
       match: {
