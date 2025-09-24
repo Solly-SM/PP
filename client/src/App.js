@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Discover from './pages/Discover';
+import Likes from './pages/Likes';
 import Matches from './pages/Matches';
 import Messages from './pages/Messages';
 import Profile from './pages/Profile';
@@ -98,6 +99,7 @@ function App() {
                 {/* Protected Routes */}
                 <Route path="/" element={<Dashboard user={user} />} />
                 <Route path="/discover" element={<Discover user={user} />} />
+                <Route path="/likes" element={<Likes user={user} />} />
                 <Route path="/matches" element={<Matches user={user} />} />
                 <Route path="/messages" element={<Messages user={user} />} />
                 <Route path="/messages/:matchId" element={<Messages user={user} />} />
