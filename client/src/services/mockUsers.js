@@ -42,9 +42,11 @@ export const deletePhoto = async (photoIndex) => {
   }
 };
 
-export default {
+const mockUsersService = {
   getUserProfile,
   updateUserProfile,
   uploadPhoto,
   deletePhoto
 };
+
+export default mockUsersService;
