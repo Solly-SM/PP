@@ -122,7 +122,7 @@ io.on('connection', (socket) => {
 });
 
 // Error handling middleware
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error('❌ Error:', err.stack);
   res.status(500).json({ 
     success: false, 
